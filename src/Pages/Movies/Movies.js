@@ -6,7 +6,7 @@ import SingleContent from "../../Components/SingleContent/SingleContent";
 const Movies = () => {
   const [page, setPage] = useState(1);
   const [content, setContent] = useState([]);
-  const [numOfPages,setNumOfPages]=useState();
+  const [numOfPages, setNumOfPages] = useState();
 
   const fetchMovies = async () => {
     const { data } = await axios.get(
@@ -18,7 +18,7 @@ const Movies = () => {
   };
   useEffect(() => {
     fetchMovies();
-     // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [page]);
   return (
     <div>
@@ -37,7 +37,9 @@ const Movies = () => {
             />
           ))}
       </div>
-      {numOfPages > 1 && ( <BasicPagination setPage={setPage} numOfPages={numOfPages}/>)}
+      {numOfPages > 1 && (
+        <BasicPagination setPage={setPage} numOfPages={numOfPages} />
+      )}
     </div>
   );
 };

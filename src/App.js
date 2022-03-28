@@ -13,9 +13,9 @@ function App() {
       <div className="app">
         <Container>
           <Routes>
-            <Route path="/" element={<Trending/>} exact />
-            <Route path="/movies" element={<Movies/>} />
-            <Route path="/search" element={<Search/>} />
+            <Route exact path="/" element={<Trending />} />
+            <Route path="/movies" element={<Movies />} />
+            <Route path="/search" element={<Search />} />
           </Routes>
         </Container>
       </div>
