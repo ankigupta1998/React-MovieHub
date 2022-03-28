@@ -1,14 +1,12 @@
 .search {
-    display: flex;
-    margin: 15px 0;
-  }
-  .searchBox{
-      background-color: rgb(202, 202, 202);
-      border-radius: 10px;
-      border-bottom: none;
-      
-  }
- .searchBox::selection{
-     border-bottom: none;
-     
- }
+  display: flex;
+  margin: 15px 0;
+}
+.searchBox {
+  background-color: rgb(202, 202, 202);
+  border-radius: 10px;
+  border-bottom: none;
+}
+.searchBox::selection {
+  border-bottom: none;
+}
