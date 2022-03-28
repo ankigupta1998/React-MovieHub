@@ -1,4 +1,4 @@
-import { Button, TextField, ThemeProvider } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 import "./Search.css";
 import SearchIcon from "@material-ui/icons/Search";
 import { useEffect, useState } from "react";
@@ -12,46 +12,43 @@ const Search = () => {
   const [content, setContent] = useState([]);
   const [numOfPages, setNumOfPages] = useState();
 
-  const fetchSearch = async (searchText) => {
+  const fetchSearch = async () => {
     try {
-      const { data } = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=4d4fd0868172548277182ea9266b3e68&language=en-US&query=${searchText}&page=${page}&include_adult=false`
-      );
-      setContent(data.results);
-      setNumOfPages(data.total_pages);
+        const { data } = await axios.get(
+          `https://api.themoviedb.org/3/search/movie?api_key=4d4fd0868172548277182ea9266b3e68&language=en-US&query=${searchText}&page=${page}&include_adult=false`
+          );
+          setContent(data.results);
+          setNumOfPages(data.total_pages);
     } catch (error) {
       console.error(error);
     }
   };
-  // function OnclickHandler(searchText) {
-  //   fetchSearch(searchText);
-  // }
+
   useEffect(() => {
     window.scroll(0, 0);
-    fetchSearch(searchText);
+
+    fetchSearch();
     // eslint-disable-next-line
-  }, [searchText, page]);
+  }, [page]);
 
   return (
     <div>
-      <ThemeProvider>
-        <div className="search">
-          <TextField
-            style={{ flex: 1 }}
-            className="searchBox"
-            label="Search"
-            variant="filled"
-            onChange={(e) => setSearchText(e.target.value)}
-          />
-          <Button
-            // onClick={fetchSearch(searchText)}
-            variant="contained"
-            style={{ marginLeft: 10 }}
-          >
-            <SearchIcon fontSize="large" />
-          </Button>
-        </div>
-      </ThemeProvider>
+      <div className="search">
+        <TextField
+          style={{ flex: 1 }}
+          className="searchBox"
+          label="Search"
+          variant="filled"
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+        <Button
+          onClick={fetchSearch}
+          variant="contained"
+          style={{ marginLeft: 10 }}
+        >
+          <SearchIcon fontSize="large" />
+        </Button>
+      </div>
       <div className="trending">
         {content &&
           content.map((c) => (
